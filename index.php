@@ -11,13 +11,21 @@ class Movie{
     private $director;
     private $category;
     private $duration;
-
+    /**
+     * Movie construct
+     * 
+     * @param $_title the title of the film
+     * @param $_director the director of the film
+     * @param $_category the category of the film
+     * @param $_duration the duration of the film
+     * 
+     */
     function __construct($_title,$_director,$_category,$_duration)
     {
         $this->title = $_title;
         $this->director = $_director;
         $this->category = $_category;
-        $this->duration = $_duration;
+        $this->SetDuration($_duration);
     }
 
     /**
@@ -64,6 +72,24 @@ class Movie{
         return $this->duration;
     } 
 
+    /**
+     * 
+     * Set film's duration
+     * 
+     * @param $duration the duration input
+     * 
+     */
+    public function SetDuration($duration){
+        if(strlen($duration) > 0 && !is_null($duration) && !empty($duration))
+        {
+            $this->duration = $duration;
+        }
+        else
+        {
+            $this->duration = "0";
+        }
+    }
+
 }
 
 ?>
@@ -80,7 +106,7 @@ class Movie{
     <?php
             $films = [];
             $films[] = new Movie("Ritorno al futuro","io","action","180");
-            $films[] = new Movie("Io sono leggenda","io","drama","60");
+            $films[] = new Movie("Io sono leggenda","io","drama","");
             $films[] = new Movie("Rambo","Topolino","adventure","120")
     ?>
     <h1>Film</h1>
