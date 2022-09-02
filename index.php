@@ -1,11 +1,24 @@
 <?php
+/**
+ * 
+ * 
+ * 
+ */
 
 class Movie{
 
     private $title;
     private $director;
-    private $catergory;
+    private $category;
     private $duration;
+
+    function __construct($_title,$_director,$_category,$_duration)
+    {
+        $this->title = $_title;
+        $this->director = $_director;
+        $this->category = $_category;
+        $this->duration = $_duration;
+    }
 
     /**
      *
@@ -20,9 +33,9 @@ class Movie{
 
     /**
      *
-     * Get title from movie 
+     * Get Director from movie 
      *
-     * @return $title   
+     * @return $director   
      *
     */
     public function GetDirector(){
@@ -31,25 +44,26 @@ class Movie{
 
     /**
      *
-     * Get title from movie 
+     * Get category from movie 
      *
-     * @return $title   
+     * @return $category   
      *
     */
     public function GetCategory(){
-        return $this->catergory;
+        return $this->category;
     }
     
      /**
      *
-     * Get title from movie 
+     * Get duration from movie 
      *
-     * @return $title   
+     * @return $duration   
      *
     */
     public function GetDuration(){
         return $this->duration;
-    }
+    } 
+
 }
 
 ?>
@@ -63,6 +77,47 @@ class Movie{
     <title>PHP Movie</title>
 </head>
 <body>
-    
+    <?php
+            $films = [];
+            $films[] = new Movie("Ritorno al futuro","io","action","180");
+            $films[] = new Movie("Io sono leggenda","io","drama","60");
+            $films[] = new Movie("Rambo","Topolino","adventure","120")
+    ?>
+    <h1>Film</h1>
+    <ol>
+        <?php
+            foreach($films as $film)
+            {
+        ?>
+        <li>
+            <?php
+                echo $film->GetTitle();
+            ?>
+            <ul>
+                <li>
+                <?php
+                    echo 'Regista - '.$film->GetDirector();
+                ?>
+                </li>
+                <li>
+                <?php
+                    echo 'Genere - '.$film->GetCategory();
+                ?>
+                </li>
+                <li>
+                <?php
+                    echo 'Durata - '.$film->GetDuration().' minuti';
+                ?>
+                </li>
+            </ul>
+            
+        </li>
+        <?php
+        }
+        ?>
+    </ol>
+
+
+
 </body>
 </html>
