@@ -80,7 +80,7 @@ class Movie{
      * 
      */
     public function SetDuration($duration){
-        if(strlen($duration) > 0 && !is_null($duration) && !empty($duration))
+        if(is_int($duration) > 0 && !is_null($duration) && !empty($duration))
         {
             $this->duration = $duration;
         }
